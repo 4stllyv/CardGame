@@ -1,35 +1,50 @@
 body {
-  background: #3498db;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
+
 .container {
-  width: 240px;
-  margin: 20px auto;
+  width: 320px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
 }
 
 #stage {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 70px);
+  gap: 15px;         
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .card-container {
-  perspective: 100px;
-  width: 50px;
-  height: 70px;
-  margin: 5px;
+  perspective: 300px;
+  width: 60px;
+  height: 80px;
+  margin: 10px;
 }
 
 .card {
   cursor: pointer;
   width: 100%;
   height: 100%;
-  transition: 0.8s;
+  transition: 0.5s;
   position: relative;
   transform-style: preserve-3d;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
 }
+
+.card:hover {
+  transform: scale(1.05);
+}
+
 
 .card-front,
 .card-back {
@@ -45,45 +60,212 @@ body {
   box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
 }
 
-.card-back {
-  background: #f1c40f;
-  color: #fff;
-}
-
 .card-front {
-  background: #fff;
-  color: #f1c40f;
+  background: white;
+  color: #333;
+  font-weight: bold;
   transform: rotateY(180deg);
 }
+
+.card-back {
+  background: linear-gradient(45deg, #f39c12, #e67e22);
+  color: white;
+  font-size: 20px;
+}
+
 
 .card.open {
   transform: rotateY(180deg);
 }
 
 #score {
-  font-size: 20px;
+  font-size: 32px;
   color: #fff;
-  text-align: right;
-  margin: 0 5px 10px 0;
+  margin-bottom: 20px;
 }
 
 #restart {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 12px 25px;
+  border-radius: 25px;
   text-decoration: none;
-  display: block;
-  background: #2ecc71;
   color: #fff;
-  height: 40px;
-  border-radius: 20px;
-  line-height: 40px;
-  text-align: center;
-  font-size: 18px;
-  margin-top: 15px;
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+  transition: 0.3s;
+}
+
+#restart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 #restart.inactive {
-  cursor: default;
   opacity: 0.4;
-  box-shadow: none;
-  margin-top: 20px;
+  pointer-events: none;
 }
+
+.card.open.matched {
+  transform: rotateY(180deg) scale(1.2);
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: rotateY(180deg) scale(1.0);
+  }
+  100% {
+    transform: rotateY(180deg) scale(1.2);
+  }
+}
+
+#clear {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: radial-gradient(circle, rgba(0,0,0,0.8), rgba(0,0,0,0.95));
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+#clear.show {
+  display: flex;
+}
+
+
+/* 最初は隠す */
+.hidden {
+  display: none;
+}
+
+/* アニメーション */
+#clear h1 {
+  
+  font-size: 80px;
+  color: #00ffcc;
+  text-align: center;
+
+  
+  text-shadow: 
+    0 0 10px #00ffcc,
+    0 0 20px #00ffcc,
+    0 0 40px #00ffcc;
+
+
+  animation: bigPop 0.6s ease;
+}
+@keyframes bigPop {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.clear-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#playAgain {
+  margin-top: 30px;
+  padding: 14px 40px;
+  font-size: 20px;
+  font-weight: bold;
+  
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  display: block;
+  background: linear-gradient(45deg, #ff6a00, #ff3c00);
+  color: white;
+
+  box-shadow: 0 0 15px rgba(255, 100, 0, 0.7);
+  transition: all 0.3s ease;
+  animation: pulse 1s infinite alternate;
+}
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px rgba(255, 100, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(255, 100, 0, 1);
+  }
+}
+
+
+
+#playAgain:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 100, 0, 1);
+}
+
+#playAgain:active {
+  transform: scale(0.95);
+}
+
+#resultTime {
+  font-size: 26px;
+  color: #fff;
+  margin-top: 10px;
+  text-shadow: 0 0 10px #fff;
+}
+
+@media (max-width: 600px) {
+
+.container {
+    width: 100%;
+    padding: 10px;
+  }
+
+#stage {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+.card-container {
+  width: 55px;
+  height: 75px;
+  margin: 5px;
+}
+
+.card {
+    transform: scale(1.05);
+  }
+
+#clear h1 {
+    font-size: 40px;  /* デカすぎ防止 */
+  }
+
+#playAgain {
+    font-size: 18px;
+    padding: 16px 30px;
+  }
+
+#score {
+    font-size: 24px;
+  }
+
+}
+
+
