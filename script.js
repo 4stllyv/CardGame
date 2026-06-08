@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var pairs = 5;
+  var pairs = 6;
   var cards = [];
 
   var flipCount = 0;
@@ -138,5 +138,52 @@
   init();
 });
 
+window.setLevel = function(num,event) {
+  pairs = num;
+
+  const stage = document.getElementById('stage');
+
+  // まず全部リセット
+  stage.classList.remove('grid-4', 'grid-5', 'grid-7');
+
+  // 難易度ごとに設定
+  if (num === 6) {
+    stage.classList.add('grid-4');
+  } else if (num === 10) {
+    stage.classList.add('grid-5');
+  } else if (num === 14) {
+    stage.classList.add('grid-7');
+  }
+
+  
+  document.querySelectorAll('#levelSelect button')
+  .forEach(btn => btn.classList.remove('active'));
+
+  
+    if (event && event.target) {
+      event.target.classList.add('active');
+    }
+
+  // リセット
+  document.getElementById('stage').innerHTML = '';
+  cards = [];
+  flipCount = 0;
+  firstCard = null;
+  secondCard = null;
+  correctCount = 0;
+  isRunning = false;
+
+  document.getElementById('score').textContent = '0.00';
+  clearTimeout(timeoutId);
+
+  // CLEAR画面閉じる
+  document.getElementById('clear').classList.remove('show');
+
   init();
+}
+
+  
+setLevel(10, {
+  target: document.querySelector('#levelSelect button:nth-child(2)')
+});
 })();
