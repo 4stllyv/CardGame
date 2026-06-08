@@ -342,11 +342,13 @@ body {
 #levelSelect {
     top: 10px;
     left: 10px;
+    flex-direction: row;
   }
 
 #levelSelect button {
-    width: 80px;
-    font-size: 12px;
+    width: auto;
+    font-size: 14px;
+    padding: 8px 12px;
   }
 
 #stage.grid-7 {
