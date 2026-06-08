@@ -25,7 +25,7 @@ body {
 
 #stage {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  justify-content: center;
   gap: 15px;         
   justify-content: center;
   margin-top: 20px;
@@ -311,7 +311,6 @@ body {
   }
 
 #stage {
-    grid-template-columns: repeat(5, 1fr);
     gap: 8px;
   }
 
