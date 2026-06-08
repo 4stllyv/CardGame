@@ -2,22 +2,28 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="container">
     <div id="score">0.00</div>
     <div id="stage">
-      <!-- <div class="card-container">
-        <div class="card">
-          <div class="card-front">1</div>
-          <div class="card-back">?</div>
-        </div>
-      </div> -->
     </div>
     <a href="" id="restart" class="inactive">RESTART?</a>
   </div>
-  <script src="script.js"></script>
+
+  <div id="clear">
+   <div class="clear-box">
+    <h1>🎉✨ CLEAR!! ✨🎉</h1>
+    <p id="resultTime"></p>
+    <button id="playAgain">もう一回</button>
+   </div>
+  </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
