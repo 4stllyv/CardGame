@@ -6,14 +6,21 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  overflow: hidden;
 }
 
 
 .container {
+  height: 90vh;
+  display: flex;
   width: 320px;
   margin: 50px auto;
   text-align: center;
   padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 #stage {
@@ -264,16 +271,35 @@ body {
 }
 
 #stage.grid-4 {
-  grid-template-columns: repeat(4, 70px);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 #stage.grid-5 {
-  grid-template-columns: repeat(5, 70px);
+  grid-template-columns: repeat(5, 1fr);
 }
 
 #stage.grid-7 {
-  grid-template-columns: repeat(7, 70px);
+  grid-template-columns: repeat(7, 1fr);
 }
+
+/* NORMAL（5列）はそのまま */
+#stage.grid-5 .card-container {
+  width: 55px;
+  height: 75px;
+}
+
+/* HARD（7列）は小さくする */
+#stage.grid-7 .card-container {
+  width: 50px;
+  height: 70px;
+}
+
+/* EASY（4列）は大きくしてもOK */
+#stage.grid-4 .card-container {
+  width: 70px;
+  height: 90px;
+}
+
 
 
 
@@ -321,6 +347,10 @@ body {
 #levelSelect button {
     width: 80px;
     font-size: 12px;
+  }
+
+#stage.grid-7 {
+    grid-template-columns: repeat(5, 1fr);
   }
 
 
