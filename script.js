@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var pairs = 10;
+  var pairs = 5;
   var cards = [];
 
   var flipCount = 0;
@@ -12,6 +12,7 @@
   var isRunning = false;
   var correctCount = 0;
   var timeoutId;
+  var lastTime = 0;
 
   function init() {
     var i;
@@ -77,9 +78,25 @@
       firstCard.className = 'card';
       secondCard.className = 'card';
     } else {
+      
+    // ★ 揃ったとき
+      firstCard.className = 'card open matched';
+      secondCard.className = 'card open matched';
+
+
       correctCount++;
       if (correctCount === pairs) {
         clearTimeout(timeoutId);
+        
+        
+        document.getElementById('resultTime').textContent =
+        lastTime.toFixed(2) + '秒でクリア！';
+
+        setTimeout(() => {
+            document.getElementById('clear').classList.add('show');
+          }, 300);
+
+
       }
     }
     secondCard.removeEventListener('transitionend', check);
@@ -88,11 +105,38 @@
   }
 
   function runTimer() {
-    document.getElementById('score').textContent = ((Date.now() - startTime) / 1000).toFixed(2);
+    lastTime = ((Date.now() - startTime) / 1000);
+    document.getElementById('score').textContent = lastTime.toFixed(2);
+
     timeoutId = setTimeout(function() {
       runTimer();
     }, 10);
+
   }
+
+  document.getElementById('playAgain').addEventListener('click', function() {
+
+  // CLEAR画面を閉じる
+  document.getElementById('clear').classList.remove('show');
+
+  // カード消す
+  document.getElementById('stage').innerHTML = '';
+
+  // 変数リセット
+  cards = [];
+  flipCount = 0;
+  firstCard = null;
+  secondCard = null;
+  correctCount = 0;
+  isRunning = false;
+
+  document.getElementById('score').textContent = '0.00';
+
+  clearTimeout(timeoutId);
+
+  // 再スタート
+  init();
+});
 
   init();
 })();
