@@ -18,7 +18,7 @@ body {
 
 #stage {
   display: grid;
-  grid-template-columns: repeat(5, 70px);
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
   gap: 15px;         
   justify-content: center;
   margin-top: 20px;
@@ -231,6 +231,52 @@ body {
   text-shadow: 0 0 10px #fff;
 }
 
+#levelSelect {
+  margin-bottom: 15px;
+  text-align: center;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+
+#levelSelect button {
+  
+  width: 100px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+}
+
+#levelSelect button.active {
+  box-shadow: 0 0 15px #00ffcc;
+  transform: scale(1.1);
+}
+
+#stage.grid-4 {
+  grid-template-columns: repeat(4, 70px);
+}
+
+#stage.grid-5 {
+  grid-template-columns: repeat(5, 70px);
+}
+
+#stage.grid-7 {
+  grid-template-columns: repeat(7, 70px);
+}
+
+
+
 @media (max-width: 600px) {
 
 .container {
@@ -265,6 +311,18 @@ body {
 #score {
     font-size: 24px;
   }
+
+
+#levelSelect {
+    top: 10px;
+    left: 10px;
+  }
+
+#levelSelect button {
+    width: 80px;
+    font-size: 12px;
+  }
+
 
 }
 
