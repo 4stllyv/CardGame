@@ -278,8 +278,8 @@ body {
   grid-template-columns: repeat(5, 1fr);
 }
 
-#stage.grid-7 {
-  grid-template-columns: repeat(7, 1fr);
+#stage.grid-6 {
+  grid-template-columns: repeat(6, 1fr);
 }
 
 /* NORMAL（5列）はそのまま */
@@ -289,7 +289,7 @@ body {
 }
 
 /* HARD（7列）は小さくする */
-#stage.grid-7 .card-container {
+#stage.grid-6 .card-container {
   width: 50px;
   height: 70px;
 }
@@ -311,13 +311,13 @@ body {
   }
 
 #stage {
-    gap: 8px;
+    gap: 5px;
   }
 
 .card-container {
-  width: 55px;
+  width: 50x;
   height: 75px;
-  margin: 5px;
+  margin: 3px;
 }
 
 .card {
@@ -350,8 +350,14 @@ body {
     padding: 8px 12px;
   }
 
-#stage.grid-7 {
+#stage.grid-6 {
     grid-template-columns: repeat(5, 1fr);
+  }
+
+
+.card-front,
+  .card-back {
+    line-height: 70px;
   }
 
 
