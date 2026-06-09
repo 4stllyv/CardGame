@@ -280,6 +280,7 @@ body {
 
 #stage.grid-6 {
   grid-template-columns: repeat(6, 1fr);
+  gap: 15px; 
 }
 
 /* NORMAL（5列）はそのまま */
@@ -290,9 +291,16 @@ body {
 
 /* HARD（7列）は小さくする */
 #stage.grid-6 .card-container {
-  width: 50px;
-  height: 70px;
+  width: 48px;
+  height: 68px;
+  margin: 0;
 }
+
+#stage.grid-6 .card-front,
+#stage.grid-6 .card-back {
+  line-height: 66px;
+}
+
 
 /* EASY（4列）は大きくしてもOK */
 #stage.grid-4 .card-container {
@@ -362,5 +370,4 @@ body {
 
 
 }
-
 
