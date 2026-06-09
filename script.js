@@ -144,15 +144,15 @@ window.setLevel = function(num,event) {
   const stage = document.getElementById('stage');
 
   // まず全部リセット
-  stage.classList.remove('grid-4', 'grid-5', 'grid-7');
+  stage.classList.remove('grid-4', 'grid-5', 'grid-6');
 
   // 難易度ごとに設定
   if (num === 6) {
     stage.classList.add('grid-4');
   } else if (num === 10) {
     stage.classList.add('grid-5');
-  } else if (num === 14) {
-    stage.classList.add('grid-7');
+  } else if (num === 15) {
+    stage.classList.add('grid-6');
   }
 
   
